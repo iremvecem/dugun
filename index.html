@@ -24,15 +24,8 @@
       --radius: 24px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       min-height: 100vh;
@@ -46,10 +39,7 @@
       overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .page {
       width: min(1180px, calc(100% - 32px));
@@ -61,26 +51,6 @@
       overflow: hidden;
       position: relative;
       backdrop-filter: blur(8px);
-    }
-
-    .leaf {
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      opacity: 0.18;
-      pointer-events: none;
-    }
-
-    .leaf--one {
-      top: -36px;
-      right: -44px;
-      transform: rotate(22deg);
-    }
-
-    .leaf--two {
-      left: -70px;
-      bottom: 24%;
-      transform: rotate(190deg);
     }
 
     nav {
@@ -109,10 +79,6 @@
       align-items: center;
       font-size: 0.92rem;
       color: var(--muted);
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
     }
 
     .nav-rsvp {
@@ -237,30 +203,10 @@
       font-family: inherit;
     }
 
-    .btn-primary {
-      background: var(--accent-dark);
-      color: #fff;
-    }
+    .btn-primary { background: var(--accent-dark); color: #fff; }
+    .btn-secondary { border-color: var(--line); background: rgba(255,255,255,0.55); }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      background: #3f5545;
-    }
-
-    .btn-secondary {
-      border-color: var(--line);
-      background: rgba(255,255,255,0.55);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    section {
-      padding: 86px 28px;
-      position: relative;
-    }
+    section { padding: 86px 28px; position: relative; }
 
     .section-head {
       max-width: 680px;
@@ -284,9 +230,7 @@
       margin-bottom: 14px;
     }
 
-    .section-head p {
-      color: var(--muted);
-    }
+    .section-head p { color: var(--muted); }
 
     .timeline {
       max-width: 760px;
@@ -312,10 +256,7 @@
       color: var(--accent-dark);
     }
 
-    .timeline-title {
-      font-weight: 600;
-      font-size: 1.05rem;
-    }
+    .timeline-title { font-weight: 600; font-size: 1.05rem; }
 
     .venue-card {
       max-width: 860px;
@@ -323,19 +264,15 @@
       border-radius: 26px;
       border: 1px solid var(--line);
       overflow: hidden;
-      background:
-        linear-gradient(135deg, rgba(127,146,127,0.12), rgba(255,255,255,0.65));
+      background: linear-gradient(135deg, rgba(127,146,127,0.12), rgba(255,255,255,0.65));
     }
 
     .venue-card-inner {
       display: grid;
       grid-template-columns: 1.25fr 0.75fr;
-      gap: 0;
     }
 
-    .venue-copy {
-      padding: 42px;
-    }
+    .venue-copy { padding: 42px; }
 
     .venue-copy h3 {
       font-family: "Italiana", serif;
@@ -344,10 +281,7 @@
       margin-bottom: 12px;
     }
 
-    .venue-copy p {
-      color: var(--muted);
-      margin-bottom: 24px;
-    }
+    .venue-copy p { color: var(--muted); margin-bottom: 24px; }
 
     .venue-art {
       min-height: 300px;
@@ -359,11 +293,6 @@
       color: rgba(255,255,255,0.92);
       text-align: center;
       padding: 28px;
-    }
-
-    .venue-art svg {
-      width: 120px;
-      margin-bottom: 16px;
     }
 
     .rsvp-wrap {
@@ -382,23 +311,11 @@
       gap: 16px;
     }
 
-    .field {
-      display: grid;
-      gap: 8px;
-    }
+    .field { display: grid; gap: 8px; }
+    .field.full { grid-column: 1 / -1; }
+    label { font-size: 0.88rem; color: var(--muted); }
 
-    .field.full {
-      grid-column: 1 / -1;
-    }
-
-    label {
-      font-size: 0.88rem;
-      color: var(--muted);
-    }
-
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       width: 100%;
       border: 1px solid var(--line);
       border-radius: 14px;
@@ -409,23 +326,7 @@
       outline: none;
     }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(127,146,127,0.12);
-    }
-
-    textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    .form-note {
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
+    textarea { min-height: 110px; resize: vertical; }
 
     footer {
       padding: 36px 24px 42px;
@@ -435,95 +336,25 @@
       font-size: 0.9rem;
     }
 
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 24px;
-      transform: translate(-50%, 120px);
-      background: var(--text);
-      color: #fff;
-      padding: 12px 18px;
-      border-radius: 999px;
-      opacity: 0;
-      pointer-events: none;
-      transition: .25s ease;
-      z-index: 99;
-      font-size: 0.9rem;
-    }
-
-    .toast.show {
-      transform: translate(-50%, 0);
-      opacity: 1;
-    }
-
     @media (max-width: 760px) {
-      .page {
-        width: min(100% - 14px, 1180px);
-        margin: 7px auto;
-        border-radius: 22px;
-      }
-
-      nav {
-        padding: 15px 18px;
-      }
-
-      .nav-links a:not(.nav-rsvp) {
-        display: none;
-      }
-
-      .hero {
-        min-height: 76vh;
-        padding-top: 72px;
-      }
-
-      .countdown {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      section {
-        padding: 68px 18px;
-      }
-
-      .timeline-item {
-        grid-template-columns: 72px 1fr;
-      }
-
-      .venue-card-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .venue-copy {
-        padding: 30px;
-      }
-
-      .venue-art {
-        min-height: 220px;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .field.full {
-        grid-column: auto;
-      }
-
-      .rsvp-wrap {
-        padding: 24px 18px;
-      }
+      .page { width: min(100% - 14px, 1180px); margin: 7px auto; border-radius: 22px; }
+      nav { padding: 15px 18px; }
+      .nav-links a:not(.nav-rsvp) { display: none; }
+      .hero { min-height: 76vh; padding-top: 72px; }
+      .countdown { grid-template-columns: repeat(2, 1fr); }
+      section { padding: 68px 18px; }
+      .timeline-item { grid-template-columns: 72px 1fr; }
+      .venue-card-inner { grid-template-columns: 1fr; }
+      .venue-copy { padding: 30px; }
+      .venue-art { min-height: 220px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .rsvp-wrap { padding: 24px 18px; }
     }
   </style>
 </head>
 <body>
   <main class="page">
-    <svg class="leaf leaf--one" viewBox="0 0 220 220" aria-hidden="true">
-      <path d="M109 209C82 167 66 119 77 58M78 60C47 64 25 48 12 20M79 81C112 74 139 50 155 15M75 112C39 117 16 104 2 78M82 142C120 135 153 111 179 76M94 174C63 183 40 181 15 169M104 199C135 187 164 164 205 126" fill="none" stroke="#4f6554" stroke-width="3" stroke-linecap="round"/>
-    </svg>
-
-    <svg class="leaf leaf--two" viewBox="0 0 220 220" aria-hidden="true">
-      <path d="M109 209C82 167 66 119 77 58M78 60C47 64 25 48 12 20M79 81C112 74 139 50 155 15M75 112C39 117 16 104 2 78M82 142C120 135 153 111 179 76M94 174C63 183 40 181 15 169M104 199C135 187 164 164 205 126" fill="none" stroke="#4f6554" stroke-width="3" stroke-linecap="round"/>
-    </svg>
-
     <nav>
       <a class="brand" href="#home">İ & C</a>
       <div class="nav-links">
@@ -536,15 +367,11 @@
     <section class="hero" id="home">
       <div>
         <div class="eyebrow">Birlikte kutlayalım</div>
-        <h1>
-          İrem Özdoğan
-          <span>&</span>
-          Cem Kılınç
-        </h1>
+        <h1>İrem Özdoğan<span>&</span>Cem Kılınç</h1>
         <div class="hero-date">20 Eylül 2026 · Pazar · 19.30</div>
         <div class="hero-place">Aktivitem Park · Masal Bahçe</div>
 
-        <div class="countdown" aria-label="Düğüne kalan süre">
+        <div class="countdown">
           <div class="countdown-card"><strong id="days">—</strong><small>Gün</small></div>
           <div class="countdown-card"><strong id="hours">—</strong><small>Saat</small></div>
           <div class="countdown-card"><strong id="minutes">—</strong><small>Dakika</small></div>
@@ -553,7 +380,7 @@
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="#katilim">Katılım Bildir</a>
-          <a class="btn btn-secondary" href="https://maps.app.goo.gl/Wr1KtgY5hgFMa8yq9?g_st=ic" target="_blank" rel="noopener">Yol Tarifi</a>
+          <a class="btn btn-secondary" href="https://maps.app.goo.gl/Wr1KtgY5hgFMa8yq9?g_st=ic" target="_blank">Yol Tarifi</a>
         </div>
       </div>
     </section>
@@ -562,26 +389,12 @@
       <div class="section-head">
         <div class="section-kicker">Günün Akışı</div>
         <h2>Program</h2>
-        <p>Akşamın planı aşağıdaki gibi. Saatlerde küçük değişiklikler olabilir.</p>
       </div>
-
       <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-time">19.00</div>
-          <div class="timeline-title">Karşılama & Kokteyl</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-time">20.00</div>
-          <div class="timeline-title">Nikâh</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-time">20.30</div>
-          <div class="timeline-title">Kutlama</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-time">21.00</div>
-          <div class="timeline-title">Cümbüş Cemaat</div>
-        </div>
+        <div class="timeline-item"><div class="timeline-time">19.00</div><div class="timeline-title">Karşılama & Kokteyl</div></div>
+        <div class="timeline-item"><div class="timeline-time">20.00</div><div class="timeline-title">Nikâh</div></div>
+        <div class="timeline-item"><div class="timeline-time">20.30</div><div class="timeline-title">Kutlama</div></div>
+        <div class="timeline-item"><div class="timeline-time">21.00</div><div class="timeline-title">Cümbüş Cemaat</div></div>
       </div>
     </section>
 
@@ -591,23 +404,14 @@
         <h2>Mekân</h2>
         <p>Düğünümüz Aktivitem Park içindeki Masal Bahçe’de gerçekleşecek.</p>
       </div>
-
       <div class="venue-card">
         <div class="venue-card-inner">
           <div class="venue-copy">
             <h3>Aktivitem Park<br>Masal Bahçe</h3>
-            <p>Konumu telefonunuzun harita uygulamasında açmak için aşağıdaki butonu kullanabilirsiniz.</p>
-            <a class="btn btn-primary" href="https://maps.app.goo.gl/Wr1KtgY5hgFMa8yq9?g_st=ic" target="_blank" rel="noopener">Google Maps’te Aç</a>
+            <p>Konumu telefonunuzun harita uygulamasında açabilirsiniz.</p>
+            <a class="btn btn-primary" href="https://maps.app.goo.gl/Wr1KtgY5hgFMa8yq9?g_st=ic" target="_blank">Google Maps’te Aç</a>
           </div>
-          <div class="venue-art">
-            <div>
-              <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
-                <path d="M50 91S79 62 79 36C79 20 66 8 50 8S21 20 21 36C21 62 50 91 50 91Z" stroke="currentColor" stroke-width="5"/>
-                <circle cx="50" cy="36" r="10" stroke="currentColor" stroke-width="5"/>
-              </svg>
-              <div>20.09.2026 · 19.30</div>
-            </div>
-          </div>
+          <div class="venue-art"><div>20.09.2026 · 19.30</div></div>
         </div>
       </div>
     </section>
@@ -624,81 +428,62 @@
           <div class="form-grid">
             <div class="field">
               <label for="name">Ad Soyad</label>
-              <input id="name" name="name" type="text" autocomplete="name" required />
+              <input id="name" type="text" required />
             </div>
-
             <div class="field">
               <label for="attendance">Katılım Durumu</label>
-              <select id="attendance" name="attendance" required>
+              <select id="attendance" required>
                 <option value="">Seçiniz</option>
                 <option value="Katılıyorum">Katılıyorum</option>
                 <option value="Katılamıyorum">Katılamıyorum</option>
               </select>
             </div>
-
             <div class="field">
               <label for="guestCount">Kişi Sayısı</label>
-              <input id="guestCount" name="guestCount" type="number" min="1" max="10" value="1" />
+              <input id="guestCount" type="number" min="1" max="10" value="1" />
             </div>
-
             <div class="field">
               <label for="phone">Telefon</label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel" />
+              <input id="phone" type="tel" />
             </div>
-
             <div class="field full">
               <label for="note">Not</label>
-              <textarea id="note" name="note" placeholder="Varsa eklemek istediğiniz bir not..."></textarea>
+              <textarea id="note"></textarea>
             </div>
-
             <div class="field full">
               <button class="btn btn-primary" type="submit">WhatsApp ile Gönder</button>
             </div>
           </div>
-          <p class="form-note">Bu site bilgi saklamaz. Form yalnızca WhatsApp mesajı oluşturur.</p>
         </form>
       </div>
     </section>
 
-    <footer>
-      İrem Özdoğan & Cem Kılınç · 20 Eylül 2026
-    </footer>
+    <footer>İrem Özdoğan & Cem Kılınç · 20 Eylül 2026</footer>
   </main>
-
-  <div class="toast" id="toast">WhatsApp mesajı hazırlanıyor…</div>
 
   <script>
     const weddingDate = new Date("2026-09-20T19:30:00+03:00");
 
     function updateCountdown() {
-      const now = new Date();
-      const distance = weddingDate - now;
+      const distance = weddingDate - new Date();
+      const values = distance <= 0
+        ? [0,0,0,0]
+        : [
+            Math.floor(distance / 86400000),
+            Math.floor((distance / 3600000) % 24),
+            Math.floor((distance / 60000) % 60),
+            Math.floor((distance / 1000) % 60)
+          ];
 
-      const ids = ["days", "hours", "minutes", "seconds"];
-
-      if (distance <= 0) {
-        ids.forEach(id => document.getElementById(id).textContent = "0");
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((distance / (1000 * 60)) % 60);
-      const seconds = Math.floor((distance / 1000) % 60);
-
-      document.getElementById("days").textContent = days;
-      document.getElementById("hours").textContent = hours;
-      document.getElementById("minutes").textContent = minutes;
-      document.getElementById("seconds").textContent = seconds;
+      ["days","hours","minutes","seconds"].forEach((id, i) => {
+        document.getElementById(id).textContent = values[i];
+      });
     }
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    const form = document.getElementById("rsvpForm");
-    const toast = document.getElementById("toast");
-
-    form.addEventListener("submit", function(event) {
+    document.getElementById("rsvpForm").addEventListener("submit", function(event) {
       event.preventDefault();
 
       const name = document.getElementById("name").value.trim();
@@ -718,16 +503,8 @@
         note ? `Not: ${note}` : ""
       ].filter(Boolean).join("\n");
 
-      // Verilen numara: 0530211920
-      // Numara eksik/yanlışsa aşağıdaki değeri güncelleyin.
-      const whatsappNumber = "90530211920";
-      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-      toast.classList.add("show");
-      setTimeout(() => {
-        window.open(url, "_blank", "noopener");
-        toast.classList.remove("show");
-      }, 350);
+      const whatsappNumber = "905302211920";
+      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank");
     });
   </script>
 </body>
