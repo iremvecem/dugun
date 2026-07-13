@@ -10,20 +10,25 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&family=Manrope:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f4efe6;
-      --paper: #f8f4ec;
-      --paper-deep: #eee6d8;
-      --text: #292a24;
-      --muted: #6d7067;
-      --olive: #7b836c;
-      --olive-dark: #515947;
-      --line: rgba(41, 42, 36, .14);
-      --soft: rgba(123, 131, 108, .08);
-      --shadow: 0 20px 56px rgba(53, 55, 47, .08);
-    }
+  --bg: #F7F4EE;
+  --paper: #FCFAF6;
+
+  --text: #2C2A28;
+
+  --muted: #B69C92;
+
+  --olive: #7D8069;
+  --olive-dark: #6F725D;
+
+  --line: #E7E1D7;
+
+  --soft: rgba(216, 208, 195, .15);
+
+  --shadow: 0 18px 45px rgba(44, 42, 40, .08);
+}
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -159,22 +164,25 @@
     }
 
     h1 {
-      margin: 0;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.35rem, 5.2vw, 3.55rem);
-      font-style: italic;
-      font-weight: 500;
-      letter-spacing: .015em;
-      line-height: .96;
+  margin: 0;
+  font-family: "Allura", cursive;
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: #2C2A28;
+}
     }
 
-    h1 .amp {
-      display: inline-block;
-      margin: 0 .09em;
-      color: var(--olive);
-      font-style: normal;
-      font-size: .88em;
-    }
+h1 .amp {
+  display: inline-block;
+  margin: 0 .12em;
+  color: #7D8069;
+  font-style: italic;
+  font-weight: 400;
+  font-size: .82em;
+}
 
     .date {
       margin-top: 16px;
@@ -195,8 +203,9 @@
       margin: 10px 0 0;
       color: var(--olive-dark);
       font-family: "Parisienne", cursive;
-      font-size: clamp(1.45rem, 3.7vw, 2.15rem);
+      font-size: clamp(1.2rem, 2.8vw, 1.75rem);
       line-height: 1.05;
+      opacity: .88;
     }
 
     .hero-actions {
@@ -339,30 +348,22 @@
       min-height: 288px;
       position: relative;
       overflow: hidden;
-      border: 1px solid var(--line);
+      border: 0;
       border-radius: 18px;
-      background: #ddd;
-      box-shadow: 0 15px 34px rgba(61, 58, 47, .10);
+      
+      box-shadow: none;
     }
 
-    .venue-photo::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(180deg, rgba(255, 231, 189, .06), rgba(58, 49, 35, .09)),
-        radial-gradient(circle at 50% 18%, rgba(255, 241, 199, .14), transparent 43%);
-      mix-blend-mode: soft-light;
-    }
+    
 
-    .venue-photo img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      filter: saturate(.93) contrast(.97) brightness(1.03) sepia(.04);
-    }
+    .venue-photo img{
+    width: 500px !important;
+    max-width: 90%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 24px;
+    box-shadow: 0 18px 45px rgba(0,0,0,.12);
+}
 
     .venue-info {
       display: flex;
@@ -572,32 +573,23 @@
     </nav>
 
     <section class="hero" id="anasayfa">
-      <svg class="leaf left" viewBox="0 0 240 300" aria-hidden="true">
-        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <path d="M52 286C79 214 98 138 111 18"/>
-          <path d="M94 71C58 69 31 49 11 20M99 104C139 95 166 72 187 40M88 150C48 149 23 132 3 104M78 200C121 190 158 163 202 117M67 245C35 245 18 232 5 212"/>
-        </g>
-      </svg>
 
-      <svg class="leaf right" viewBox="0 0 240 300" aria-hidden="true">
-        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <path d="M52 286C79 214 98 138 111 18"/>
-          <path d="M94 71C58 69 31 49 11 20M99 104C139 95 166 72 187 40M88 150C48 149 23 132 3 104M78 200C121 190 158 163 202 117M67 245C35 245 18 232 5 212"/>
-        </g>
-      </svg>
+
+    
 
       <div class="hero-inner">
         <div class="eyebrow">Birlikte kutlayalım</div>
         <h1>İrem <span class="amp">&</span> Cem</h1>
         <div class="date">20 EYLÜL 2026</div>
         <div class="time">19.30</div>
-        <div class="tagline">Birlikte, en güzel hikâyemizi yazıyoruz.</div>
+        <div class="tagline">"Birlikte, en güzel hikâyemizi yazıyoruz."</div>
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="#katilim">Katılım Bildir</a>
           <a class="btn btn-secondary" href="https://maps.app.goo.gl/Wr1KtgY5hgFMa8yq9?g_st=ic" target="_blank" rel="noopener">Yol Tarifi</a>
         </div>
       </div>
+      
     </section>
 
     <section class="section" id="program">
@@ -677,20 +669,18 @@
       </div>
     </section>
 
-    <section class="section" id="mekan">
-      <div class="venue-wrap">
-        <div class="venue-photo">
-          <img src="masal-bahce.webp" alt="Aktivitem Park Masal Bahçe">
-        </div>
+    
+<section class="section" id="mekan">
+  <h2 class="section-title">Masal Bahçe</h2>
 
-        <div class="venue-info">
-          <h2>Masal Bahçe</h2>
-          <p>Aktivitem Park · Polonezköy, İstanbul</p>
-          <a class="btn btn-primary" href="https://maps.app.goo.gl/Wr1KtgY5hgFMa8yq9?g_st=ic" target="_blank" rel="noopener">Yol Tarifi</a>
-        </div>
-      </div>
-    </section>
+  <div class="venue-photo">
+    <img src="images/masal-bahce.webp" alt="Masal Bahçe">
+  </div>
 
+  <p class="venue-text">
+    Doğanın içinde, sevdiklerimizle birlikte kutlayacağımız bu özel günde sizleri de aramızda görmekten mutluluk duyarız.
+  </p>
+</section>
     <section class="section" id="katilim">
       <div class="rsvp-wrap">
         <div class="rsvp-copy">
