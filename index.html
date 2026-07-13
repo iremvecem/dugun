@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="İrem Özdoğan ve Cem Kılınç'ın düğün daveti." />
+  <meta name="theme-color" content="#f3eee7" />
+  <title>İrem & Cem | 20.09.2026</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Italiana&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f3eee7;
+      --paper: #fbf8f3;
+      --text: #24312a;
+      --muted: #68736d;
+      --accent: #7f927f;
+      --accent-dark: #4f6554;
+      --line: rgba(36, 49, 42, 0.14);
+      --shadow: 0 20px 60px rgba(48, 55, 50, 0.10);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "DM Sans", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(127, 146, 127, 0.13), transparent 26%),
+        radial-gradient(circle at 90% 20%, rgba(173, 148, 128, 0.12), transparent 28%),
+        var(--bg);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 16px auto;
+      background: rgba(251, 248, 243, 0.92);
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: var(--shadow);
+      border-radius: 32px;
+      overflow: hidden;
+      position: relative;
+      backdrop-filter: blur(8px);
+    }
+
+    .leaf {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .leaf--one {
+      top: -36px;
+      right: -44px;
+      transform: rotate(22deg);
+    }
+
+    .leaf--two {
+      left: -70px;
+      bottom: 24%;
+      transform: rotate(190deg);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 18px 28px;
+      background: rgba(251, 248, 243, 0.86);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      font-family: "Italiana", serif;
+      font-size: 1.35rem;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-rsvp {
+      padding: 10px 16px;
+      border: 1px solid var(--accent-dark);
+      border-radius: 999px;
+      color: var(--accent-dark);
+    }
+
+    .hero {
+      min-height: 78vh;
+      padding: 84px 24px 64px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent-dark);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      margin-bottom: 26px;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.45;
+    }
+
+    h1 {
+      font-family: "Italiana", serif;
+      font-size: clamp(3.2rem, 9vw, 7.4rem);
+      line-height: 0.95;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      margin-bottom: 26px;
+    }
+
+    h1 span {
+      display: block;
+      font-family: "DM Sans", sans-serif;
+      font-size: clamp(1rem, 2.4vw, 1.5rem);
+      font-weight: 400;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 16px 0;
+    }
+
+    .hero-date {
+      font-size: clamp(1.05rem, 2.1vw, 1.35rem);
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-place {
+      font-size: 1rem;
+      color: var(--accent-dark);
+      margin-bottom: 34px;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(74px, 1fr));
+      gap: 10px;
+      max-width: 520px;
+      margin: 0 auto 34px;
+    }
+
+    .countdown-card {
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px 10px;
+    }
+
+    .countdown-card strong {
+      display: block;
+      font-family: "Italiana", serif;
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .countdown-card small {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.74rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: 0.2s ease;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: var(--accent-dark);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #3f5545;
+    }
+
+    .btn-secondary {
+      border-color: var(--line);
+      background: rgba(255,255,255,0.55);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 86px 28px;
+      position: relative;
+    }
+
+    .section-head {
+      max-width: 680px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-kicker {
+      color: var(--accent-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.76rem;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-family: "Italiana", serif;
+      font-weight: 400;
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+    }
+
+    .timeline {
+      max-width: 760px;
+      margin: 0 auto;
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 18px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.45);
+      border-radius: 20px;
+      align-items: center;
+    }
+
+    .timeline-time {
+      font-family: "Italiana", serif;
+      font-size: 1.65rem;
+      color: var(--accent-dark);
+    }
+
+    .timeline-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .venue-card {
+      max-width: 860px;
+      margin: 0 auto;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(127,146,127,0.12), rgba(255,255,255,0.65));
+    }
+
+    .venue-card-inner {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 0;
+    }
+
+    .venue-copy {
+      padding: 42px;
+    }
+
+    .venue-copy h3 {
+      font-family: "Italiana", serif;
+      font-size: 2.4rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .venue-copy p {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .venue-art {
+      min-height: 300px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 50% 40%, rgba(255,255,255,0.75), transparent 28%),
+        linear-gradient(160deg, rgba(79,101,84,0.86), rgba(127,146,127,0.64));
+      color: rgba(255,255,255,0.92);
+      text-align: center;
+      padding: 28px;
+    }
+
+    .venue-art svg {
+      width: 120px;
+      margin-bottom: 16px;
+    }
+
+    .rsvp-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 16px 40px rgba(36,49,42,0.06);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 15px;
+      font: inherit;
+      background: #fcfbf8;
+      color: var(--text);
+      outline: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(127,146,127,0.12);
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .form-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    footer {
+      padding: 36px 24px 42px;
+      text-align: center;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translate(-50%, 120px);
+      background: var(--text);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 999px;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      z-index: 99;
+      font-size: 0.9rem;
+    }
+
+    .toast.show {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: min(100% - 14px, 1180px);
+        margin: 7px auto;
+        border-radius: 22px;
+      }
+
+      nav {
+        padding: 15px 18px;
+      }
+
+      .nav-links a:not(.nav-rsvp) {
+        display: none;
+      }
+
+      .hero {
+        min-height: 76vh;
+        padding-top: 72px;
+      }
+
+      .countdown {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      section {
+        padding: 68px 18px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 72px 1fr;
+      }
+
+      .venue-card-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .venue-copy {
+        padding: 30px;
+      }
+
+      .venue-art {
+        min-height: 220px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .rsvp-wrap {
+        padding: 24px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <svg class="leaf leaf--one" viewBox="0 0 220 220" aria-hidden="true">
+      <path d="M109 209C82 167 66 119 77 58M78 60C47 64 25 48 12 20M79 81C112 74 139 50 155 15M75 112C39 117 16 104 2 78M82 142C120 135 153 111 179 76M94 174C63 183 40 181 15 169M104 199C135 187 164 164 205 126" fill="none" stroke="#4f6554" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+
+    <svg class="leaf leaf--two" viewBox="0 0 220 220" aria-hidden="true">
+      <path d="M109 209C82 167 66 119 77 58M78 60C47 64 25 48 12 20M79 81C112 74 139 50 155 15M75 112C39 117 16 104 2 78M82 142C120 135 153 111 179 76M94 174C63 183 40 181 15 169M104 199C135 187 164 164 205 126" fill="none" stroke="#4f6554" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+
+    <nav>
+      <a class="brand" href="#home">İ & C</a>
+      <div class="nav-links">
+        <a href="#program">Program</a>
+        <a href="#mekan">Mekân</a>
+        <a class="nav-rsvp" href="#katilim">Katılım Bildir</a>
+      </div>
+    </nav>
+
+    <section class="hero" id="home">
+      <div>
+        <div class="eyebrow">Birlikte kutlayalım</div>
+        <h1>
+          İrem Özdoğan
+          <span>&</span>
+          Cem Kılınç
+        </h1>
+        <div class="hero-date">20 Eylül 2026 · Pazar · 19.30</div>
+        <div class="hero-place">Aktivitem Park · Masal Bahçe</div>
+
+        <div class="countdown" aria-label="Düğüne kalan süre">
+          <div class="countdown-card"><strong id="days">—</strong><small>Gün</small></div>
+          <div class="countdown-card"><strong id="hours">—</strong><small>Saat</small></div>
+          <div class="countdown-card"><strong id="minutes">—</strong><small>Dakika</small></div>
+          <div class="countdown-card"><strong id="seconds">—</strong><small>Saniye</small></div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#katilim">Katılım Bildir</a>
+          <a class="btn btn-secondary" href="https://maps.app.goo.gl/Wr1KtgY5hgFMa8yq9?g_st=ic" target="_blank" rel="noopener">Yol Tarifi</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="program">
+      <div class="section-head">
+        <div class="section-kicker">Günün Akışı</div>
+        <h2>Program</h2>
+        <p>Akşamın planı aşağıdaki gibi. Saatlerde küçük değişiklikler olabilir.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-time">19.00</div>
+          <div class="timeline-title">Karşılama & Kokteyl</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">20.00</div>
+          <div class="timeline-title">Nikâh</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">20.30</div>
+          <div class="timeline-title">Kutlama</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">21.00</div>
+          <div class="timeline-title">Cümbüş Cemaat</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mekan">
+      <div class="section-head">
+        <div class="section-kicker">Konum</div>
+        <h2>Mekân</h2>
+        <p>Düğünümüz Aktivitem Park içindeki Masal Bahçe’de gerçekleşecek.</p>
+      </div>
+
+      <div class="venue-card">
+        <div class="venue-card-inner">
+          <div class="venue-copy">
+            <h3>Aktivitem Park<br>Masal Bahçe</h3>
+            <p>Konumu telefonunuzun harita uygulamasında açmak için aşağıdaki butonu kullanabilirsiniz.</p>
+            <a class="btn btn-primary" href="https://maps.app.goo.gl/Wr1KtgY5hgFMa8yq9?g_st=ic" target="_blank" rel="noopener">Google Maps’te Aç</a>
+          </div>
+          <div class="venue-art">
+            <div>
+              <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                <path d="M50 91S79 62 79 36C79 20 66 8 50 8S21 20 21 36C21 62 50 91 50 91Z" stroke="currentColor" stroke-width="5"/>
+                <circle cx="50" cy="36" r="10" stroke="currentColor" stroke-width="5"/>
+              </svg>
+              <div>20.09.2026 · 19.30</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="katilim">
+      <div class="section-head">
+        <div class="section-kicker">LCV</div>
+        <h2>Katılım Bildir</h2>
+        <p>Formu doldurduğunuzda hazır mesaj WhatsApp üzerinden açılır.</p>
+      </div>
+
+      <div class="rsvp-wrap">
+        <form id="rsvpForm">
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Ad Soyad</label>
+              <input id="name" name="name" type="text" autocomplete="name" required />
+            </div>
+
+            <div class="field">
+              <label for="attendance">Katılım Durumu</label>
+              <select id="attendance" name="attendance" required>
+                <option value="">Seçiniz</option>
+                <option value="Katılıyorum">Katılıyorum</option>
+                <option value="Katılamıyorum">Katılamıyorum</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="guestCount">Kişi Sayısı</label>
+              <input id="guestCount" name="guestCount" type="number" min="1" max="10" value="1" />
+            </div>
+
+            <div class="field">
+              <label for="phone">Telefon</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+
+            <div class="field full">
+              <label for="note">Not</label>
+              <textarea id="note" name="note" placeholder="Varsa eklemek istediğiniz bir not..."></textarea>
+            </div>
+
+            <div class="field full">
+              <button class="btn btn-primary" type="submit">WhatsApp ile Gönder</button>
+            </div>
+          </div>
+          <p class="form-note">Bu site bilgi saklamaz. Form yalnızca WhatsApp mesajı oluşturur.</p>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      İrem Özdoğan & Cem Kılınç · 20 Eylül 2026
+    </footer>
+  </main>
+
+  <div class="toast" id="toast">WhatsApp mesajı hazırlanıyor…</div>
+
+  <script>
+    const weddingDate = new Date("2026-09-20T19:30:00+03:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const distance = weddingDate - now;
+
+      const ids = ["days", "hours", "minutes", "seconds"];
+
+      if (distance <= 0) {
+        ids.forEach(id => document.getElementById(id).textContent = "0");
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    const form = document.getElementById("rsvpForm");
+    const toast = document.getElementById("toast");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const attendance = document.getElementById("attendance").value;
+      const guestCount = document.getElementById("guestCount").value;
+      const phone = document.getElementById("phone").value.trim();
+      const note = document.getElementById("note").value.trim();
+
+      const message = [
+        "Merhaba İrem ve Cem,",
+        "",
+        "Düğününüz için katılım bilgim:",
+        `Ad Soyad: ${name}`,
+        `Durum: ${attendance}`,
+        `Kişi Sayısı: ${guestCount}`,
+        phone ? `Telefon: ${phone}` : "",
+        note ? `Not: ${note}` : ""
+      ].filter(Boolean).join("\n");
+
+      // Verilen numara: 0530211920
+      // Numara eksik/yanlışsa aşağıdaki değeri güncelleyin.
+      const whatsappNumber = "90530211920";
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+      toast.classList.add("show");
+      setTimeout(() => {
+        window.open(url, "_blank", "noopener");
+        toast.classList.remove("show");
+      }, 350);
+    });
+  </script>
+</body>
+</html>
