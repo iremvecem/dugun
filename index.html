@@ -12,22 +12,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&family=Manrope:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
   <style>
-    :root {
+    :root{
   --bg: #F7F4EE;
   --paper: #FCFAF6;
 
-  --text: #2C2A28;
-
-  --muted: #B69C92;
-
-  --olive: #7D8069;
-  --olive-dark: #6F725D;
+  --text: #3A3632;
+--olive: #7B8664;
+  --olive-dark: #5E6A4D;
+  --muted: #9D8B78;
 
   --line: #E7E1D7;
 
-  --soft: rgba(216, 208, 195, .15);
+  --shadow: 0 18px 45px rgba(44,42,40,.08);
 
-  --shadow: 0 18px 45px rgba(44, 42, 40, .08);
 }
 
     * { box-sizing: border-box; }
@@ -168,8 +165,8 @@
   width: 118px;
   right: -56px;
   top: -10px;
-  transform: rotate(-7deg);
   transform-origin: bottom left;
+  animation: kukiFloat 4s ease-in-out infinite;
 }
 
     @keyframes fadeUp {
@@ -211,6 +208,7 @@ h1 .amp {
       font-size: .96rem;
       font-weight: 500;
       letter-spacing: .15em;
+      color: var(--olive-dark);
     }
 
     .time {
@@ -218,6 +216,7 @@ h1 .amp {
       font-family: "Cormorant Garamond", serif;
       font-size: .86rem;
       letter-spacing: .15em;
+      color: var(--olive-dark);
     }
 
     .tagline {
@@ -267,9 +266,10 @@ h1 .amp {
     }
 
     .btn-secondary:hover {
-      transform: translateY(-2px);
-      border-color: var(--olive);
-    }
+  transform: translateY(-2px);
+  border-color: var(--olive);
+  background: #EEF2EA;
+}
 
     .section {
       padding: 48px 20px;
@@ -310,6 +310,7 @@ h1 .amp {
   font-weight: 600;
   letter-spacing: .12em;
   text-align: right;
+  text-shadow: 0 1px 0 rgba(255,255,255,.55);
 }
 
 .event-title {
@@ -382,18 +383,63 @@ h1 .amp {
       border-radius: 18px;
       
       box-shadow: none;
+      
+
+
+.venue-photo::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--paper) 0%,
+    rgba(252,250,246,.85) 20%,
+    rgba(252,250,246,.35) 55%,
+    transparent 100%
+  );
+}
+
+.venue-photo::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--paper) 0%,
+    rgba(252,250,246,.85) 20%,
+    rgba(252,250,246,.35) 55%,
+    transparent 100%
+  );
+}
     }
 
     
 
-    .venue-photo img{
-    width: 500px !important;
-    max-width: 90%;
-    display: block;
-    margin: 0 auto;
-    border-radius: 18px;
-    box-shadow: 0 18px 45px rgba(0,0,0,.12);
+   .venue-photo img {
+  width: 500px !important;
+  max-width: 90%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 18px;
+  box-shadow: 0 18px 45px rgba(0,0,0,.12);
+
+  filter: saturate(.94) brightness(1.04);
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
 }
+  
+
+
 
     .venue-info {
       display: flex;
@@ -471,7 +517,7 @@ h1 .amp {
       border: 1px solid var(--line);
       border-radius: 9px;
       outline: none;
-      background: rgba(255, 255, 255, .66);
+     background: rgba(247, 249, 244, .92);
       color: var(--text);
     }
 
@@ -479,7 +525,7 @@ h1 .amp {
     select:focus,
     textarea:focus {
       border-color: var(--olive);
-      box-shadow: 0 0 0 3px rgba(123, 131, 108, .08);
+      box-shadow: 0 0 0 3px rgba(123, 134, 100, .16);
     }
 
     textarea {
@@ -524,7 +570,7 @@ h1 .amp {
     filter:contrast(1.0) saturate(1.12);
     z-index: 5;
 
-    transform: translateX(-50%);
+    transform: translateX(calc(-50% - 1px));
 }
 
     .page {
@@ -570,7 +616,7 @@ h1 .amp {
     right: auto !important;
     width: 108vw !important;
     height: 100dvh !important;
-    transform: translateX(-50%) !important;
+    transform: translateX(-51%) !important;
     object-fit: fill !important;
     object-position: center !important;
     opacity: .32 !important;
@@ -684,15 +730,43 @@ h1 .amp {
   margin: 22px auto 0;
   padding: 0 18px;
   text-align: center;
-  color: var(--olive-dark);
+  color: #6D7558;
   font-family: "Cormorant Garamond", serif;
   font-size: 1.18rem;
   font-style: italic;
   font-weight: 500;
   line-height: 1.55;
 }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity .8s ease,
+    transform .8s ease;
 }
-</style>
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+@keyframes kukiFloat {
+  0%, 100% {
+    transform: rotate(-7deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(-4deg) translateY(-4px);
+  }
+}</style>
 </head>
 
 <body>
@@ -889,7 +963,29 @@ h1 .amp {
         submitBtn.disabled = false;
         submitBtn.textContent = "Katılım Bildir";
       }
+  const revealItems = document.querySelectorAll(".section, footer");
+
+revealItems.forEach((item) => {
+  item.classList.add("reveal");
+});
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        revealObserver.unobserve(entry.target);
+      }
     });
+  },
+  {
+    threshold: 0.12
+  }
+);
+
+revealItems.forEach((item) => {
+  revealObserver.observe(item);
+});  });
   </script>
 </body>
 </html>
