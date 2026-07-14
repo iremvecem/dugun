@@ -75,7 +75,9 @@
     .brand {
       font-family: "Cormorant Garamond", serif;
       font-size: 1.02rem;
-      letter-spacing: .06em;
+      letter-spacing:.12em;
+text-transform:uppercase;
+font-size:.86rem;
     }
 
     .nav-links {
@@ -244,7 +246,7 @@ h1 .amp {
       font-size: .82rem;
       font-weight: 600;
       cursor: pointer;
-      transition: .2s ease;
+      transition: all .28s ease;;
     }
 
     .btn-primary {
@@ -252,10 +254,10 @@ h1 .amp {
       color: #fff;
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      background: #3e4638;
-    }
+    .btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0,0,0,.10);
+}
 
     .btn-secondary {
       border-color: var(--line);
@@ -282,33 +284,41 @@ h1 .amp {
     }
 
     .timeline {
-      width: min(600px, 100%);
-      margin: 0 auto;
-      position: relative;
-    }
+  width: min(560px, 100%);
+  margin: 0 auto;
+  padding-left: 100px;
+}
 
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 28px;
-      bottom: 28px;
-      width: 1px;
-      background: linear-gradient(var(--line), rgba(123, 131, 108, .28), var(--line));
-      transform: translateX(-50%);
-    }
+.timeline::before {
+  display: none;
+}
 
-    .event {
-      min-height: 103px;
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr 62px 1fr;
-      align-items: center;
-    }
+.event {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: baseline;
+  gap: 28px;
+  padding: 15px 0;
+}
 
-    .event + .event {
-      border-top: 1px solid rgba(41, 42, 36, .07);
-    }
+.event-time {
+  color: var(--olive-dark);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-align: right;
+}
+
+.event-title {
+  margin: 0;
+  color: var(--text);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-align: left;
+}
+    
 
     .event-icon {
       width: 54px;
@@ -318,11 +328,11 @@ h1 .amp {
       color: var(--olive-dark);
     }
 
-    .event-icon.band {
-      width: 128px;
-      height: 58px;
-      margin-right: 5px;
-    }
+    .event-icon.band{
+    width: 120px;
+    height: auto;
+    margin-right: -17px;
+}
 
     .event-marker {
       width: 8px;
@@ -343,6 +353,7 @@ h1 .amp {
       font-size: 1.06rem;
       font-weight: 600;
       letter-spacing: .08em;
+      padding-right: -1000px;
     }
 
     .event-title {
@@ -378,7 +389,7 @@ h1 .amp {
     max-width: 90%;
     display: block;
     margin: 0 auto;
-    border-radius: 24px;
+    border-radius: 18px;
     box-shadow: 0 18px 45px rgba(0,0,0,.12);
 }
 
@@ -506,8 +517,9 @@ h1 .amp {
     width: 90vw;
     height: 100vh;
     object-fit: cover;
-    opacity: .22;
+    opacity: .60;
     pointer-events: none;
+    filter:contrast(1.0) saturate(1.12);
     z-index: 5;
 
     transform: translateX(-50%);
@@ -530,11 +542,20 @@ h1 .amp {
         opacity: .14;
         object-fit: cover;
       }
+.cem-wrap{
+    position: relative;
+}
 
+.kuki{
+    width: 82px;
+    right: -28px;
+    top: -4px;
+    transform: rotate(-6deg);
+}
       .page {
         width: calc(100% - 10px);
         margin: 5px auto;
-        border-radius: 18px;
+        border-radius: 24px;
       }
 .nav { padding: 10px 12px; }
       .hero {
@@ -560,14 +581,14 @@ h1 .amp {
       }
 
       .timeline::before {
-        left: 14px;
-        transform: none;
-      }
+  display: none;
+}
 
-      .event {
-        min-height: 101px;
-        grid-template-columns: 76px 1fr;
-      }
+     .event {
+  grid-template-columns: 72px 1fr;
+  gap: 16px;
+  padding: 13px 0;
+}
 
       .event-icon {
         width: 46px;
@@ -576,18 +597,16 @@ h1 .amp {
         margin: 18px;
       }
 
-      .event-icon.band {
-  width: 82px;
-  height: 45px;
-  margin-left: 20px;
-  transform: scale(.82);
+     .event-icon.band{
+    width: 90px;
+    height: auto;
+    margin-left: 6px;
+    margin-right: 0;
+    transform: none;
 }
       .event-marker {
-        position: absolute;
-        left: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
+  display: none;
+}
 
       .event-text { padding-left: 15px; }
       .event-time { font-size: 1rem; }
@@ -646,77 +665,27 @@ h1 .amp {
     <section class="section" id="program">
       <h2 class="section-title">Program</h2>
 
-      <div class="timeline">
-        <article class="event">
-          <svg class="event-icon" viewBox="0 0 70 58" aria-hidden="true">
-            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M10 9h20l-3 22c-1 7-5 10-11 10S6 38 5 31L2 9h8M16 41v9M9 50h14"/>
-              <path d="M60 9H40l3 22c1 7 5 10 11 10s10-3 11-10l3-22h-8M54 41v9M47 50h14"/>
-              <path d="M27 25h16"/>
-            </g>
-          </svg>
-          <span class="event-marker"></span>
-          <div class="event-text">
-            <div class="event-time">19.00</div>
-            <div class="event-title">Karşılama & Kokteyl</div>
-          </div>
+      <
         </article>
+<article class="event">
+  <div class="event-time">19.00</div>
+  <div class="event-title">Karşılama & Kokteyl</div>
+</article>
 
-        <article class="event">
-          <svg class="event-icon" viewBox="0 0 70 58" aria-hidden="true">
-            <g fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="28" cy="32" r="16"/>
-              <circle cx="43" cy="32" r="16"/>
-              <path d="M36 14l4-6 4 6"/>
-            </g>
-          </svg>
-          <span class="event-marker"></span>
-          <div class="event-text">
-            <div class="event-time">20.00</div>
-            <div class="event-title">Nikâh</div>
-          </div>
-        </article>
+<article class="event">
+  <div class="event-time">20.00</div>
+  <div class="event-title">Nikâh</div>
+</article>
 
-        <article class="event">
-          <svg class="event-icon" viewBox="0 0 70 58" aria-hidden="true">
-            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <path d="M35 4v9M14 12l8 8M56 12l-8 8M8 31h12M50 31h12"/>
-              <path d="M22 26l8 8-10 14M48 26l-8 8 10 14M28 21l7 7 7-7"/>
-              <circle cx="12" cy="49" r="2"/><circle cx="58" cy="46" r="2"/><circle cx="36" cy="52" r="2"/>
-            </g>
-          </svg>
-          <span class="event-marker"></span>
-          <div class="event-text">
-            <div class="event-time">20.30</div>
-            <div class="event-title">Kutlama</div>
-          </div>
-        </article>
+<article class="event">
+  <div class="event-time">20.30</div>
+  <div class="event-title">Kutlama</div>
+</article>
 
-        <article class="event">
-          <svg class="event-icon band" viewBox="0 0 170 78" aria-label="Beş kişilik Cümbüş Cemaat çizimi">
-            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="17" cy="23" r="6"/>
-              <path d="M10 20h14M9 18l8-5 8 5M17 29v22M17 36l-8 10M17 36l10 10M12 51h10"/>
-              <ellipse cx="8" cy="43" rx="5" ry="7"/>
-              <circle cx="50" cy="29" r="6"/>
-              <path d="M43 26h14M50 35v17M50 40l-10 7M50 40l12 7M45 52l-4 16M55 52l4 16"/>
-              <ellipse cx="40" cy="47" rx="7" ry="5"/><path d="M46 46l22-8"/>
-              <circle cx="86" cy="28" r="6"/>
-              <path d="M79 25h14M86 34v18M86 39l-9 8M86 39l12 7M81 52l-4 16M91 52l4 16"/>
-              <ellipse cx="76" cy="47" rx="7" ry="5"/><path d="M82 46l23-7"/>
-              <circle cx="121" cy="23" r="6"/>
-              <path d="M114 20h14M113 18l8-5 8 5M121 29v22M121 36l-7 8M121 36l8-12M116 51h10"/>
-              <circle cx="133" cy="23" r="6"/>
-              <circle cx="153" cy="30" r="6"/>
-              <path d="M153 36v16M153 41l-8 8M153 41l7 9M148 52l-4 16M158 52l4 16M139 68h27"/>
-            </g>
-          </svg>
-          <span class="event-marker"></span>
-          <div class="event-text">
-            <div class="event-time">21.00</div>
-            <div class="event-title">Cümbüş Cemaat</div>
-          </div>
-        </article>
+<article class="event">
+  <div class="event-time">21.00</div>
+  <div class="event-title">Cümbüş Cemaat</div>
+</article>
       </div>
     </section>
 
