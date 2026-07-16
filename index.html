@@ -1163,6 +1163,74 @@ border-radius: 11px;
     font-size: 8px;
   }
 }
+/* Dreamy açılış ve scroll animasyonu */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  animation: page-awaken 1s cubic-bezier(.22, .61, .36, 1) both;
+}
+
+@keyframes page-awaken {
+  from {
+    opacity: 0.25;
+    filter: saturate(0.7) brightness(1.06);
+  }
+
+  to {
+    opacity: 1;
+    filter: saturate(1) brightness(1);
+  }
+}
+
+.dreamy-reveal {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  filter: saturate(0.68) brightness(1.05);
+
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(.22, .61, .36, 1),
+    filter 1.15s ease;
+
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+.dreamy-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  filter: saturate(1) brightness(1);
+}
+
+.dreamy-reveal img {
+  transform: scale(1.025);
+  transition: transform 1.2s ease;
+}
+
+.dreamy-reveal.is-visible img {
+  transform: scale(1);
+}
+
+/* Hareket azaltma ayarı açık olan cihazlarda animasyonu kapatır */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    animation: none;
+  }
+
+  .dreamy-reveal,
+  .dreamy-reveal img {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
 </style>
 </head>
 
@@ -1330,7 +1398,7 @@ border-radius: 11px;
 
               <div class="field">
                 <label for="guestCount">Toplam Kişi Sayısı</label>
-                <input id="guestCount" name="guestCount" type="number" min="1" max="10" value="1" required>
+                <input id="guestCount" name="guestCount" type="number" min="0" max="10" value="0" required>
               </div>
 
               <div class="field">
@@ -1492,6 +1560,47 @@ border-radius: 11px;
 
   updateCountdown();
   setInterval(updateCountdown, 1000);
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const revealItems = document.querySelectorAll(
+      "section, [data-reveal]"
+    );
+
+    revealItems.forEach((item, index) => {
+      item.classList.add("dreamy-reveal");
+
+      const delay = Math.min(index * 60, 240);
+      item.style.setProperty("--reveal-delay", `${delay}ms`);
+    });
+
+    if (!("IntersectionObserver" in window)) {
+      revealItems.forEach((item) => {
+        item.classList.add("is-visible");
+      });
+
+      return;
+    }
+
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -7% 0px"
+      }
+    );
+
+    revealItems.forEach((item) => {
+      revealObserver.observe(item);
+    });
+  });
 </script>
 </body>
 </html>
