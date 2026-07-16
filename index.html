@@ -1019,7 +1019,39 @@ h1 .amp {
   font-family: "Cormorant Garamond", serif;
   font-size: 1.05rem;
 }
+@media (max-width: 600px) {
+  .photo-gallery-head.private-photo-note {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    align-items: start;
+    width: 100%;
+    padding: 0 22px;
+    box-sizing: border-box;
+    text-align: left;
+    left: auto !important;
+    transform: none !important;
+  }
 
+  .photo-gallery-head.private-photo-note h3,
+  .photo-gallery-head.private-photo-note p {
+    margin: 0;
+    font-family: inherit !important;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #8a8074;
+    letter-spacing: 0;
+  }
+
+  .photo-gallery-head.private-photo-note h3 {
+    text-wrap: balance;
+  }
+
+  .photo-gallery-head.private-photo-note p {
+    max-width: none;
+  }
+}
 .photo-load-more {
   display: flex;
   margin: 16px auto 0;
@@ -1241,7 +1273,24 @@ body {
     left: 52px;
   }
 }
-
+@media (min-width: 601px) {
+  .photo-gallery-head.private-photo-note span {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.25;
+    color: #3f4637;
+    margin: 0;
+  }
+}
+@media (max-width: 600px) {
+  .photo-upload-card {
+    width: calc(100% - 80px);
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+}
 </style>
 </head>
 
