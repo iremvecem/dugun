@@ -566,7 +566,7 @@ h1 .amp {
     width: 90vw;
     height: 100vh;
     object-fit: cover;
-    opacity: .60;
+    opacity: .30;
     pointer-events: none;
     filter:contrast(1.0) saturate(1.12);
     z-index: 5;
@@ -620,7 +620,7 @@ h1 .amp {
     transform: translateX(-51%) !important;
     object-fit: fill !important;
     object-position: center !important;
-    opacity: .32 !important;
+    opacity: .14 !important;
     z-index: 5 !important;
     pointer-events: none !important;
   }
@@ -1094,7 +1094,67 @@ body.lightbox-open { overflow: hidden; }
   .photo-lightbox { padding: 10px; }
   .photo-lightbox-close { top: 6px; right: 6px; }
 }
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 24px auto 8px;
+  max-width: 520px;
+}
 
+.countdown div {
+  width: 82px;
+  padding: 13px 6px 11px;
+  border: 1px solid rgba(91, 103, 72, 0.28);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.42);
+  text-align: center;
+  backdrop-filter: blur(3px);
+}
+
+.countdown strong {
+  display: block;
+  color: #596548;
+  font-size: 25px;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.countdown span {
+  display: block;
+  margin-top: 7px;
+  color: #717866;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.countdown-finished {
+  color: #596548;
+  font-family: inherit;
+  font-size: 20px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .countdown {
+    gap: 7px;
+    padding: 0 12px;
+  }
+
+  .countdown div {
+    width: 68px;
+    padding: 11px 3px 9px;
+  }
+
+  .countdown strong {
+    font-size: 21px;
+  }
+
+  .countdown span {
+    font-size: 9px;
+  }
+}
 </style>
 </head>
 
@@ -1127,7 +1187,13 @@ body.lightbox-open { overflow: hidden; }
   </span>
 </h1>
         <div class="date">20 EYLÜL 2026</div>
-        <div class="time">19.30</div>
+        <div class="time">19.00</div>
+        <div class="countdown" id="countdown">
+  <div><strong id="days">00</strong><span>Gün</span></div>
+  <div><strong id="hours">00</strong><span>Saat</span></div>
+  <div><strong id="minutes">00</strong><span>Dakika</span></div>
+  <div><strong id="seconds">00</strong><span>Saniye</span></div>
+</div>
         <div class="tagline">"Birlikte, en güzel hikâyemizi yazıyoruz."</div>
 
         <div class="hero-actions">
@@ -1378,5 +1444,44 @@ body.lightbox-open { overflow: hidden; }
     }
   </script>
   <script type="module" src="photos.js?v=20260716-upload-v3"></script>
+<script>
+  const weddingDate = new Date("2026-09-20T19:00:00+03:00").getTime();
+
+  function updateCountdown() {
+    const countdown = document.getElementById("countdown");
+    const distance = weddingDate - Date.now();
+
+    if (!countdown) return;
+
+    if (distance <= 0) {
+      countdown.className = "countdown-finished";
+      countdown.innerHTML = "Bugün evleniyoruz!";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor(
+      (distance % (1000 * 60 * 60)) / (1000 * 60)
+    );
+    const seconds = Math.floor(
+      (distance % (1000 * 60)) / 1000
+    );
+
+    document.getElementById("days").textContent =
+      String(days).padStart(2, "0");
+    document.getElementById("hours").textContent =
+      String(hours).padStart(2, "0");
+    document.getElementById("minutes").textContent =
+      String(minutes).padStart(2, "0");
+    document.getElementById("seconds").textContent =
+      String(seconds).padStart(2, "0");
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
 </body>
 </html>
