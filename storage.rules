@@ -1,0 +1,61 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && request.auth.token.email == "iremozdogan@gmail.com";
+    }
+
+    function uploadWindowOpen() {
+      // 16 Temmuz 2026 00.00 (Türkiye) – 31 Ekim 2026 23.59.59 (Türkiye)
+      return request.time.toMillis() >= 1784149200000
+        && request.time.toMillis() <= 1793480399000;
+    }
+
+    function validFileName(fileName) {
+      return fileName.matches('^(0[1-9]|1[0-9]|2[0-5])[.]jpg$');
+    }
+
+    match /wedding/full/{uid}/{fileName} {
+      allow get: if signedIn();
+      allow list: if false;
+      allow create: if signedIn()
+        && uploadWindowOpen()
+        && request.auth.uid == uid
+        && validFileName(fileName)
+        && request.resource.size > 0
+        && request.resource.size < 8 * 1024 * 1024
+        && request.resource.contentType == "image/jpeg";
+      allow update: if false;
+      allow delete: if isAdmin()
+        || (signedIn()
+          && request.auth.uid == uid
+          && request.time < resource.timeCreated + duration.value(10, 'm'));
+    }
+
+    match /wedding/thumb/{uid}/{fileName} {
+      allow get: if signedIn();
+      allow list: if false;
+      allow create: if signedIn()
+        && uploadWindowOpen()
+        && request.auth.uid == uid
+        && validFileName(fileName)
+        && request.resource.size > 0
+        && request.resource.size < 1024 * 1024
+        && request.resource.contentType == "image/jpeg";
+      allow update: if false;
+      allow delete: if isAdmin()
+        || (signedIn()
+          && request.auth.uid == uid
+          && request.time < resource.timeCreated + duration.value(10, 'm'));
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

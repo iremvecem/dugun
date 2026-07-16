@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>İrem & Cem | Fotoğraf Yönetimi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --paper: #fcfaf6;
+      --text: #3a3632;
+      --muted: #85796c;
+      --olive: #5e6a4d;
+      --line: #e7e1d7;
+      --danger: #8a3434;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px 14px 50px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Manrope", sans-serif;
+    }
+    main { width: min(1080px, 100%); margin: 0 auto; }
+    h1 {
+      margin: 0 0 18px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 500;
+    }
+    .panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--paper);
+    }
+    form { display: grid; gap: 12px; max-width: 440px; }
+    label { display: grid; gap: 6px; font-size: .82rem; color: var(--muted); }
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--text);
+      font: inherit;
+    }
+    button, .admin-button {
+      min-height: 40px;
+      padding: 9px 13px;
+      border: 1px solid var(--olive);
+      border-radius: 999px;
+      background: var(--olive);
+      color: #fff;
+      font: inherit;
+      font-size: .82rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    button:disabled { opacity: .55; cursor: wait; }
+    .danger { border-color: var(--danger); background: transparent; color: var(--danger); }
+    .admin-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .admin-head p { margin: 0; color: var(--muted); }
+    .admin-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 14px;
+    }
+    .admin-photo-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+    }
+    .admin-photo-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      background: #eee;
+    }
+    .admin-photo-meta { display: grid; gap: 6px; padding: 11px; }
+    .admin-photo-meta span { color: var(--muted); font-size: .72rem; }
+    .admin-photo-actions { display: grid; grid-template-columns: 1fr auto; gap: 7px; margin-top: 5px; }
+    .admin-status { min-height: 24px; margin: 12px 0; color: var(--muted); }
+    .admin-status.error { color: var(--danger); }
+    .notice { padding: 16px; border-radius: 12px; background: #fff6db; }
+    [hidden] { display: none !important; }
+    @media (max-width: 600px) {
+      .admin-head { align-items: flex-start; flex-direction: column; }
+      .admin-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .admin-photo-actions { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Fotoğraf Yönetimi</h1>
+
+    <div id="adminSetupNotice" class="notice" hidden>
+      Firebase ayarları henüz girilmemiş. Önce <strong>FIREBASE_KURULUM.md</strong> dosyasındaki adımları tamamlayın.
+    </div>
+
+    <section id="loginPanel" class="panel">
+      <form id="adminLoginForm">
+        <label>
+          Yönetici e-postası
+          <input id="adminEmail" type="email" autocomplete="username" required>
+        </label>
+        <label>
+          Şifre
+          <input id="adminPassword" type="password" autocomplete="current-password" required>
+        </label>
+        <button type="submit">Giriş yap</button>
+      </form>
+    </section>
+
+    <div id="adminStatus" class="admin-status" aria-live="polite"></div>
+
+    <section id="adminPanel" hidden>
+      <div class="admin-head">
+        <div>
+          <strong>İrem & Cem galerisi</strong>
+          <p id="adminCount"></p>
+        </div>
+        <button id="adminLogout" type="button">Çıkış yap</button>
+      </div>
+      <div id="adminGallery" class="admin-gallery"></div>
+    </section>
+  </main>
+
+  <script type="module" src="photos-admin.js"></script>
+</body>
+</html>

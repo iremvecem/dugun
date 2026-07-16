@@ -1,0 +1,76 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && request.auth.token.email == "iremozdogan@gmail.com";
+    }
+
+    match /uploaders/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+
+      allow create: if signedIn()
+        && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly([
+          "uploadCount", "uploaderName", "updatedAt"
+        ])
+        && request.resource.data.uploadCount == 1
+        && request.resource.data.uploaderName is string
+        && request.resource.data.uploaderName.size() > 0
+        && request.resource.data.uploaderName.size() <= 60
+        && request.resource.data.updatedAt == request.time;
+
+      allow update: if signedIn()
+        && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly([
+          "uploadCount", "uploaderName", "updatedAt"
+        ])
+        && request.resource.data.uploadCount == resource.data.uploadCount + 1
+        && request.resource.data.uploadCount <= 25
+        && request.resource.data.uploaderName is string
+        && request.resource.data.uploaderName.size() > 0
+        && request.resource.data.uploaderName.size() <= 60
+        && request.resource.data.updatedAt == request.time;
+
+      allow delete: if isAdmin();
+    }
+
+    match /photos/{photoId} {
+      allow read: if signedIn();
+
+      allow create: if signedIn()
+        && request.resource.data.keys().hasOnly([
+          "uid", "slot", "uploaderName", "originalName",
+          "fullPath", "thumbPath", "fullSize", "thumbSize", "createdAt"
+        ])
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.slot is string
+        && request.resource.data.slot.matches('^(0[1-9]|1[0-9]|2[0-5])$')
+        && photoId == request.auth.uid + "_" + request.resource.data.slot
+        && request.resource.data.uploaderName is string
+        && request.resource.data.uploaderName.size() > 0
+        && request.resource.data.uploaderName.size() <= 60
+        && request.resource.data.originalName is string
+        && request.resource.data.originalName.size() <= 160
+        && request.resource.data.fullPath == "wedding/full/" + request.auth.uid + "/" + request.resource.data.slot + ".jpg"
+        && request.resource.data.thumbPath == "wedding/thumb/" + request.auth.uid + "/" + request.resource.data.slot + ".jpg"
+        && request.resource.data.fullSize is int
+        && request.resource.data.fullSize > 0
+        && request.resource.data.fullSize < 8 * 1024 * 1024
+        && request.resource.data.thumbSize is int
+        && request.resource.data.thumbSize > 0
+        && request.resource.data.thumbSize < 1024 * 1024
+        && request.resource.data.createdAt == request.time;
+
+      allow update, delete: if isAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
