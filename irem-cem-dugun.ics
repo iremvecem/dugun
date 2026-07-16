@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//İrem ve Cem//Düğün Takvimi//TR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:20260920T190000-irem-cem-dugun@iremvecem.github.io
+DTSTAMP:20260716T200000Z
+DTSTART;TZID=Europe/Istanbul:20260920T190000
+DTEND;TZID=Europe/Istanbul:20260921T000000
+SUMMARY:İrem & Cem Düğünü
+LOCATION:Aktivitem Park – Masal Bahçe, Beykoz, İstanbul
+DESCRIPTION:19.00 Karşılama ve Kokteyl\n20.00 Nikâh\n20.30 Kutlama\n21.00 Cümbüş Cemaat\nHarita: https://maps.app.goo.gl/Wr1KtgY5hgFMa8yq9
+URL:https://iremvecem.github.io/dugun/
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR
