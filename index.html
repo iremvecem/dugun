@@ -1371,6 +1371,14 @@ body {
     line-height: 1.6 !important;
   }
 }
+
+.field-hint {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: .68rem;
+  line-height: 1.45;
+}
+
 </style>
 </head>
 
@@ -1474,15 +1482,6 @@ body {
     </p>
   </div>
 </div>
-
-  <div class="venue-detail-item">
-    <span class="venue-detail-title">
-    
-    </span>
-
-
-</div>
-
   <div class="venue-photo">
     <img src="images/masal-bahce.webp" alt="Masal Bahçe">
   </div>
@@ -1578,6 +1577,20 @@ body {
                 <input id="phone" name="phone" type="tel">
               </div>
 
+              <div class="field full" id="shuttleField" hidden>
+                <label for="shuttle">Ulaşım Servisi</label>
+                <select id="shuttle" name="shuttle">
+                  <option value="">Seçiniz</option>
+                  <option value="Anadolu Yakası">Anadolu Yakası</option>
+                  <option value="Avrupa Yakası">Avrupa Yakası</option>
+                  <option value="Servis kullanmayacağım">Servis kullanmayacağım</option>
+                  <option value="Henüz emin değilim">Henüz emin değilim</option>
+                </select>
+                <p class="field-hint">
+                  Kalkış noktaları ve saatleri kesinleştiğinde ayrıca bilgilendirme yapılacaktır.
+                </p>
+              </div>
+
               <div class="field full">
                 <label for="note">Not</label>
                 <textarea id="note" name="note" placeholder="Varsa eklemek istediğiniz bir not..."></textarea>
@@ -1623,6 +1636,23 @@ body {
     const closedMessage = document.getElementById("closedMessage");
     const submitBtn = document.getElementById("submitBtn");
     const statusBox = document.getElementById("status");
+    const attendanceSelect = document.getElementById("attendance");
+    const shuttleField = document.getElementById("shuttleField");
+    const shuttleSelect = document.getElementById("shuttle");
+
+    function updateShuttleField() {
+      const isAttending = attendanceSelect.value === "Katılıyorum";
+
+      shuttleField.hidden = !isAttending;
+      shuttleSelect.required = isAttending;
+
+      if (!isAttending) {
+        shuttleSelect.value = "";
+      }
+    }
+
+    attendanceSelect.addEventListener("change", updateShuttleField);
+    updateShuttleField();
 
     if (new Date() > rsvpDeadline) {
       form.hidden = true;
@@ -1651,6 +1681,7 @@ body {
         guestCount: document.getElementById("guestCount").value,
         phone: document.getElementById("phone").value.trim(),
         note: document.getElementById("note").value.trim(),
+        shuttle: attendanceSelect.value === "Katılıyorum" ? shuttleSelect.value : "",
         source: "Düğün sitesi"
       });
 
@@ -1664,6 +1695,7 @@ body {
 
         form.reset();
         document.getElementById("guestCount").value = "1";
+        updateShuttleField();
         statusBox.className = "status ok";
         statusBox.textContent = "Katılım bilginiz alındı. Teşekkür ederiz.";
       } catch (error) {
