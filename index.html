@@ -1291,6 +1291,86 @@ body {
     box-sizing: border-box;
   }
 }
+/* Mekân adresi ve servis bilgi kartları — son düzen */
+.venue-details {
+  width: min(760px, calc(100% - 48px)) !important;
+  margin: 28px auto 32px !important;
+
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+
+  text-align: center !important;
+}
+
+.venue-details .venue-detail-item {
+  width: 100% !important;
+  min-height: 160px !important;
+  padding: 22px 24px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  border: 1px solid rgba(89, 101, 72, 0.22) !important;
+  border-radius: 14px !important;
+  background: rgba(255, 255, 255, 0.34) !important;
+
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+.venue-details .venue-detail-title {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 auto 10px !important;
+
+  font-family: "Cormorant Garamond", serif !important;
+  font-size: 23px !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+  color: #3f4637 !important;
+
+  text-align: center !important;
+}
+
+.venue-details .venue-detail-item p {
+  display: block !important;
+  width: 100% !important;
+  max-width: 340px !important;
+  margin: 0 auto !important;
+
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+  color: #786f64 !important;
+
+  text-align: center !important;
+}
+
+@media (max-width: 600px) {
+  .venue-details {
+    width: calc(100% - 44px) !important;
+    margin: 22px auto 27px !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .venue-details .venue-detail-item {
+    min-height: 0 !important;
+    padding: 18px 17px !important;
+  }
+
+  .venue-details .venue-detail-title {
+    font-size: 21px !important;
+  }
+
+  .venue-details .venue-detail-item p {
+    max-width: 290px !important;
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+  }
+}
 </style>
 </head>
 
@@ -1370,6 +1450,38 @@ body {
 
     <section class="section" id="mekan">
   <h2 class="section-title">Masal Bahçe</h2>
+  <div class="venue-details">
+  <div class="venue-detail-item">
+    <span class="venue-detail-title">
+      Aktivitem Park – Masal Bahçe
+    </span>
+
+    <p>
+      Polonezköy Mah. Polonezköy Yolu Sok. No:3,<br>
+      Öztürk Çiftliği, Polonezköy / Beykoz / İstanbul
+    </p>
+  </div>
+
+  <div class="venue-detail-item">
+    <span class="venue-detail-title">
+      Ulaşım Servisi
+    </span>
+
+    <p>
+      Düğün günü Anadolu ve Avrupa yakasından servis kaldırılacaktır.
+      Katılım bilginizi belirttikten sonra servisle ilgili detaylı
+      bilgilendirme tarafınıza yapılacaktır.
+    </p>
+  </div>
+</div>
+
+  <div class="venue-detail-item">
+    <span class="venue-detail-title">
+    
+    </span>
+
+
+</div>
 
   <div class="venue-photo">
     <img src="images/masal-bahce.webp" alt="Masal Bahçe">
